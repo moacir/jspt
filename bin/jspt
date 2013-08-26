@@ -23,15 +23,11 @@ var opts = nopt({
 });
 
 var help = [
-    meta.name + ' ' + meta.version + ' - ' + meta.description
+    'JSPT - Javascript Portugol',
+    'Versão: ' + meta.version + ' Alfa'
 ].join('\n');
 
-if (opts.version) {
-    console.log(meta.version);
-    process.exit();
-}
-
-if (opts.help) {
+if (opts.help || opts.version) {
     console.log(help);
     process.exit();
 }
