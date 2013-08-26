@@ -381,7 +381,7 @@ expr_logical_and
   : expr_or
   | expr_logical_and "&&" expr_or
     {{ $$ = new yy.LogicalExpressionNode($2, $1, $3); }}
-  | expr_logical_and "e" expr_or
+  | expr_logical_and E expr_or
     {{ $$ = new yy.LogicalExpressionNode($2, $1, $3); }}
   ;
 
@@ -389,7 +389,7 @@ expr_logical_or
   : expr_logical_and
   | expr_logical_or "||" expr_logical_and
     {{ $$ = new yy.LogicalExpressionNode($2, $1, $3); }}
-  | expr_logical_or "ou" expr_logical_and
+  | expr_logical_or OU expr_logical_and
     {{ $$ = new yy.LogicalExpressionNode($2, $1, $3); }}
   ;
 
