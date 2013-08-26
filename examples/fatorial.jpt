@@ -1,0 +1,17 @@
+/*
+ * Exemplo de Função Recursiva
+ */
+algoritmo fatorial;
+
+início
+    imprima("O Fatorial de 6 é: ", fatorial(6));
+fim
+
+função fatorial(n: inteiro) : inteiro
+início
+    se n = 0 então
+        retorne 1;
+    fim-se
+
+    retorne n * fatorial(n -1);
+fim

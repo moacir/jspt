@@ -1,0 +1,8 @@
+/*
+ * Olá Mundo
+ */
+algoritmo primeiro_programa;
+
+início
+   imprima("Olá Mundo ;)");
+fim
