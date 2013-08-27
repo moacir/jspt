@@ -130,13 +130,13 @@ ESC "\\".
 
 algorithm
   : stm_algorithm stm_block EOF
-    {{ return new yy.AlgorithmNode($1, [], [], $2); }}
+    {{ return new yy.AlgorithmNode($1, null, null, $2); }}
   | stm_algorithm var_decl_block stm_block func_decl_list EOF
     {{ return new yy.AlgorithmNode($1, $2, $4, $3); }}
   | stm_algorithm stm_block func_decl_list EOF
-    {{ return new yy.AlgorithmNode($1, [], $3, $2); }}
+    {{ return new yy.AlgorithmNode($1, null, $3, $2); }}
   | stm_algorithm var_decl_block stm_block EOF
-    {{ return new yy.AlgorithmNode($1, $2, [], $3); }}
+    {{ return new yy.AlgorithmNode($1, $2, null, $3); }}
   ;
 
 stm_algorithm
@@ -419,15 +419,15 @@ fcall_arg_list
 
 literal
   : T_STRING_LIT
-    {{ $$ = new yy.LiteralNode('String', $1, $1); }}
+    {{ $$ = new yy.LiteralNode('literal', $1, $1); }}
   | T_INT_LIT
-    {{ $$ = new yy.LiteralNode('Integer', yy.Util.createNumberFromRawString($1), $1); }}
+    {{ $$ = new yy.LiteralNode('inteiro', yy.Util.createNumberFromRawString($1), $1); }}
   | T_REAL_LIT
-    {{ $$ = new yy.LiteralNode('Real', new Number($1), $1); }}
+    {{ $$ = new yy.LiteralNode('real', new Number($1), $1); }}
   | T_CARAC_LIT
-    {{ $$ = new yy.LiteralNode('Char', $1, $1); }}
+    {{ $$ = new yy.LiteralNode('caractere', $1, $1); }}
   | T_BOOL_LIT 
-    {{ $$ = new yy.LiteralNode('Boolean', $1, $1); }}
+    {{ $$ = new yy.LiteralNode('lógico', $1, $1); }}
   ;
 
 func_decl_list
