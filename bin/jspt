@@ -12,7 +12,6 @@ var fs = require('fs'),
     nopt = require('nopt'),
     path = require('path'),
     meta = require('../package.json'),
-    stdlib = require('../lib/jspt/modules/std'),
     jspt = require('../lib/jspt/main');
 
 var opts = nopt({
@@ -22,14 +21,32 @@ var opts = nopt({
     run: path
 });
 
-var help = [
+var versionText = [
     'JSPT - Javascript Portugol',
-    'Versão: ' + meta.version + ' Alfa'
+    'Versão: ' + meta.version,
 ].join('\n');
 
-if (opts.help || opts.version) {
-    console.log(help);
-    process.exit();
+var helpText = [
+    versionText,
+    '',
+    'Uso: $ jspt --run [arquivo]',
+    '',
+    'Options:',
+    '   --run [arquivo]              Executa um arquivo Portugol',
+    '   --compile [arquivo]          Compila um arquivo Portugol para Javascript',
+    '   --help                       Mostra este texto de ajuda',
+    '   --version                    Mostra informações sobre a versão',
+    '',
+].join('\n');
+
+if (opts.help) {
+    console.log(helpText);
+    process.exit(0);
+}
+
+if (opts.version) {
+    console.log(versionText);
+    process.exit(0);
 }
 
 if (opts.run) {
@@ -41,14 +58,14 @@ if (opts.run) {
         console.log(jspt.compile(data));
     });
 } else {
-    console.log(help);
+    console.log(helpText);
     process.exit(1);
 }
 
-function openFile(path, fn) {
-    fs.readFile(path, 'utf-8', function(error, data) {
+function openFile(file, fn) {
+    fs.readFile(file, 'utf-8', function(error, data) {
         if (error) {
-            throw Error(error);
+            throw new Error(error);
         }
 
         fn(data);

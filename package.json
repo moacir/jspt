@@ -1,7 +1,7 @@
 {
   "name": "jspt",
   "description": "Javascript Implementation of the Portugol Language",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "author": {
     "name": "Moacir de Oliveira",
     "email": "moacirdeoliveira.eng@gmail.com"
