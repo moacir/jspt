@@ -2,19 +2,22 @@
 
 Implementação da linguagem de programação Portugol em Javascript.
 
-## Instalação
-Instale o programa jspt com: `npm install jspt`
+## Instalação com NodeJS
+Instale o programa jspt com: `npm install -g jspt`
 
-```javascript
-var jspt = require('jspt');
-jspt.execute();
+```bash
+Uso: $ jspt --run [arquivo]
+
+Options:
+   --run [arquivo]              Executa um arquivo Portugol
+   --compile [arquivo]          Compila um arquivo Portugol para Javascript
+   --help                       Mostra este texto de ajuda
+   --version                    Mostra informações sobre a versão
 ```
 
-## Documentation
-_(Coming soon)_
-
-## Examples
-_(Coming soon)_
+##TODO
+- Checagem de tipos
+- Biblioteca padrão
 
 ## Licença
 Copyright (c) 2013 Moacir de Oliveira  
