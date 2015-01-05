@@ -18,7 +18,8 @@ var opts = nopt({
     version: Boolean,
     help: Boolean,
     compile: path,
-    run: path
+    run: path,
+    ast: path
 });
 
 var versionText = [
@@ -34,6 +35,7 @@ var helpText = [
     'Options:',
     '   --run [arquivo]              Executa um arquivo Portugol',
     '   --compile [arquivo]          Compila um arquivo Portugol para Javascript',
+    '   --ast [arquivo]              Cria uma Árvore Sintática Abstrata de um arquivo Portugol',
     '   --help                       Mostra este texto de ajuda',
     '   --version                    Mostra informações sobre a versão',
     '',
@@ -56,6 +58,10 @@ if (opts.run) {
 } else if (opts.compile) {
     openFile(opts.compile, function (data) {
         console.log(jspt.compile(data));
+    });
+} else if (opts.ast) {
+    openFile(opts.ast, function (data) {
+        console.log(JSON.stringify(jspt.ast(data)));
     });
 } else {
     console.log(helpText);
