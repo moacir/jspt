@@ -208,7 +208,7 @@ stm_block
   : INICIO stm_list FIM
     {{ $$ = $2; }}
   | INICIO FIM
-    {{ $$ = []; }}
+    {{ $$ = new yy.StatementListNode([]); }}
   ;
 
 stm_list
@@ -255,24 +255,24 @@ stm_attr
 
 stm_se
   : SE expr ENTAO FIM_SE
-    {{ $$ = new yy.IfStatementNode($2, []); }}
+    {{ $$ = new yy.IfStatementNode($2, new yy.StatementListNode([])); }}
   | SE expr ENTAO stm_list FIM_SE
     {{ $$ = new yy.IfStatementNode($2, $4); }}
   | SE expr ENTAO stm_list SENAO stm_list FIM_SE
     {{ $$ = new yy.IfStatementNode($2, $4, $6); }}
   | SE expr ENTAO SENAO stm_list FIM_SE
-    {{ $$ = new yy.IfStatementNode($2, [], $5); }}
+    {{ $$ = new yy.IfStatementNode($2, new yy.StatementListNode([]), $5); }}
   | SE expr ENTAO stm_list SENAO FIM_SE
-    {{ $$ = new yy.IfStatementNode($2, $4, []); }}
+    {{ $$ = new yy.IfStatementNode($2, $4, new yy.StatementListNode([])); }}
   | SE expr ENTAO SENAO FIM_SE
-    {{ $$ = new yy.IfStatementNode($2, [], []); }}
+    {{ $$ = new yy.IfStatementNode($2, new yy.StatementListNode([]), new yy.StatementListNode([])); }}
   ;
 
 stm_enquanto
   : ENQUANTO expr FACA stm_list FIM_ENQUANTO
     {{ $$ = new yy.WhileStatementNode($2, $4); }}
   | ENQUANTO expr FACA FIM_ENQUANTO
-    {{ $$ = new yy.WhileStatementNode($2, []); }}
+    {{ $$ = new yy.WhileStatementNode($2, new yy.StatementListNode([])); }}
   ;
 
 stm_para 
@@ -284,7 +284,7 @@ stm_para
 
 stm_para_block
   : FACA FIM_PARA
-    {{ $$ = []; }}
+    {{ $$ = new yy.StatementListNode([]); }}
   | FACA stm_list FIM_PARA
     {{ $$ = $2; }}
   ;
