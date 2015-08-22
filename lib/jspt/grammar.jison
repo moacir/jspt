@@ -28,8 +28,8 @@ T_DEC_LIT [0-9]+
 T_OCTAL_LIT [0][cC][0-8]+
 T_HEX_LIT [0][xX][0-9a-fA-F]+
 T_BIN_LIT [0][bB][01]+
-T_REAL_LIT {T_DEC_LIT}+[\.]{T_DEC_LIT}+
 T_INT_LIT {T_OCTAL_LIT}|{T_HEX_LIT}|{T_BIN_LIT}|{T_DEC_LIT}
+T_REAL_LIT {T_DEC_LIT}[\.]{T_DEC_LIT}
 
 ESC "\\".
 
@@ -46,8 +46,8 @@ ESC "\\".
 
 <<EOF>>                 { return 'EOF'; }
 
-{T_INT_LIT}             { return "T_INT_LIT" }
 {T_REAL_LIT}            { return "T_REAL_LIT" }
+{T_INT_LIT}             { return "T_INT_LIT" }
 
 "\"\""                  { return "T_STRING_LIT"; }
 "\""([^"]|{ESC})*"\""   { return "T_STRING_LIT"; }
