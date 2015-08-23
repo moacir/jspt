@@ -6,6 +6,7 @@ module.exports = function(grunt) {
     jshint: {
       files: ['lib/jspt/**/*.js'],
       options: {
+        node: true,
         ignores: ['lib/jspt/grammar.js']
       },
     },
