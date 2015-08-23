@@ -324,19 +324,19 @@ expr_unary
 expr_multiply
   : expr_unary
   | expr_multiply "*" expr_unary
-    {{ $$ = new yy.BinaryExpressionNode($2, $1, $3); }}
+    {{ $$ = new yy.ArithmeticExpressionNode($2, $1, $3); }}
   | expr_multiply "/" expr_unary
-    {{ $$ = new yy.BinaryExpressionNode($2, $1, $3); }}
+    {{ $$ = new yy.ArithmeticExpressionNode($2, $1, $3); }}
   | expr_multiply "%" expr_unary
-    {{ $$ = new yy.BinaryExpressionNode($2, $1, $3); }}
+    {{ $$ = new yy.ArithmeticExpressionNode($2, $1, $3); }}
   ;
 
 expr_additive
   : expr_multiply
   | expr_additive "+" expr_multiply
-    {{ $$ = new yy.BinaryExpressionNode($2, $1, $3); }}
+    {{ $$ = new yy.ArithmeticExpressionNode($2, $1, $3); }}
   | expr_additive "-" expr_multiply
-    {{ $$ = new yy.BinaryExpressionNode($2, $1, $3); }}
+    {{ $$ = new yy.ArithmeticExpressionNode($2, $1, $3); }}
   ;
 
 expr_relational
