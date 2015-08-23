@@ -5,7 +5,7 @@
   "author": {
     "name": "Moacir de Oliveira",
     "email": "moacirdeoliveira.eng@gmail.com"
-  }, 
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/moacir/jspt.git"
@@ -17,10 +17,11 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-browserify": "~1.2.4",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jasmine": "^0.9.1",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-browserify": "~1.2.4"
+    "grunt-contrib-uglify": "~0.2.2"
   }
 }

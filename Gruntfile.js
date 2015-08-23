@@ -41,17 +41,25 @@ module.exports = function(grunt) {
         dest: 'dist/jspt-web.js'
       },
       options: {
-        alias: ["./lib/jspt/main.js:jspt"],
+        alias: ['./lib/jspt/main.js:jspt'],
+      }
+    },
+    jasmine: {
+      src: 'dist/jspt-web.js',
+      options: {
+        specs: 'spec/**/*.js'
       }
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-browserify');
 
-  // Default task(s).
-  grunt.registerTask('default', ['jshint', 'browserify', /*'concat',*/ 'uglify']);
+  // Tasks
+  grunt.registerTask('default', ['jshint', 'browserify', /*'concat',*/ 'uglify', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'jasmine']);
 
 };
